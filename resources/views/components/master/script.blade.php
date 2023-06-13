@@ -334,10 +334,8 @@ function showPage(url) {
 
     let state = {name: "name", page: 'History', url:url};
     doGet(url, function (msg, data) {
-
-        if (url != '/dashboard') {
-            znLoadingPageEnd();
-        }
+        
+        znLoadingPageEnd();
         
         if (data == null){
             znNotif("danger", msg);

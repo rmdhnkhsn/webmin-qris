@@ -3,22 +3,22 @@
         <div class="app-header-menu app-header-mobile-drawer align-items-stretch" data-kt-drawer="true" data-kt-drawer-name="app-header-menu" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="250px" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_header_menu_toggle" data-kt-swapper="true" data-kt-swapper-mode="{default: 'append', lg: 'prepend'}" data-kt-swapper-parent="{default: '#kt_app_body', lg: '#kt_app_header_wrapper'}">
             <div class="headerMenu" id="kt_app_header_menu" data-kt-menu="true">
                 <!-- onclick="loadContent(event, this)" -->
-                <a href="{{ route('dashboard.index')}}" class="menuLink {{ (request()->is('dashboard*')) ? 'active' : '' }}">
+                <a href="{{ route('dashboard.index')}}" onclick="loadContent(event,this);" class="menuLink {{ (request()->is('dashboard*')) ? 'active' : '' }}">
                     <span class="menu-link">
                         <span class="menu-title">Dashboards</span>
                     </span>
                 </a>
-                <a href="{{ route('main.index')}}?type=dataUser" class="menuLink {{ (request()->is('main/index*')) ? 'active' : '' }}">
+                <a href="{{ route('main.index')}}?type=dataUser" onclick="loadContent(event,this);" class="menuLink {{ (request()->is('main/index*')) ? 'active' : '' }}">
                     <span class="menu-link">
                         <span class="menu-title">User Admin</span>
                     </span>
                 </a>
-                <a href="{{ route('main.index')}}?type=dataConfig" class="menuLink {{ (request()->is('main/index*')) ? 'active' : '' }}">
+                <a href="{{ route('main.index')}}?type=dataConfig" onclick="loadContent(event,this);" class="menuLink {{ (request()->is('main/index*')) ? 'active' : '' }}">
                     <span class="menu-link">
                         <span class="menu-title">Config</span>
                     </span>
                 </a>
-                <a href="{{ route('main.index')}}?type=dataReport" class="menuLink {{ (request()->is('main/index*')) ? 'active' : '' }}">
+                <a href="{{ route('main.index')}}?type=dataReport" onclick="loadContent(event,this);" class="menuLink {{ (request()->is('main/index*')) ? 'active' : '' }}">
                     <span class="menu-link">
                         <span class="menu-title">Laporan</span>
                     </span>

@@ -30,7 +30,6 @@ class dataConfigModel extends Model
         $data['actButton'] = ['edit'];
         $data['tableHead'] = 
         array(
-            ["No","all","no"],
             ["Config ID","all","config_id"],
             ["Config Value","all","config_val"],
             ["Act","all","action"]
@@ -53,7 +52,7 @@ class dataConfigModel extends Model
     public function getDT($request)
     {
 
-        $dtable = \DB::select("SELECT config_id, config_map.no, config_map.config_val from config_map");
+        $dtable = \DB::select("SELECT config_id, config_map.config_val from config_map");
 
         $dt = DT::of($dtable);
         
