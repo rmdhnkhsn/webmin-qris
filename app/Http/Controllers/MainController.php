@@ -66,8 +66,8 @@ class MainController extends Controller
         $param['init'] = $init;
 
         //Main
-
-        return view('main')->nest('child', $view,$param);
+        return $this->bsGetView($view,$param);
+        // return view('main')->nest('child', $view,$param);
     }
 
     public function data(Request $request)

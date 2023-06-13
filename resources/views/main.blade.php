@@ -5,14 +5,17 @@
 	</head>
 	<body id="kt_app_body" data-kt-app-header-fixed-mobile="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="false" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
 		<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
-			<div class="app-page flex-column flex-column-fluid" id="pageLoad">
+			<div class="app-page flex-column flex-column-fluid">
 				<div id="kt_app_header" class="app-header" data-kt-sticky="true" data-kt-sticky-activate="{default: false, lg: true}" data-kt-sticky-name="app-header-sticky" data-kt-sticky-offset="{default: false, lg: '300px'}">
 					<div class="app-container container-fluid d-flex align-items-stretch justify-content-between" id="kt_app_header_container">
 						<x-master.brand />  
 						<x-master.menu />  
 					</div>
 				</div>
-				@yield('content')
+				<div id="pageLoad">
+					@yield('content')
+				</div>
+				
 			</div>
 		</div>
 

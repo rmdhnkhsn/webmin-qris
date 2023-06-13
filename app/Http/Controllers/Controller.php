@@ -31,6 +31,16 @@ class Controller extends BaseController
         return $str;
     }
 
+    public function bsGetView($view,$param)
+    {
+        if (Req::ajax()) {
+            return view('onlyContent')->nest('child', $view,$param);
+        }else {
+            return view('main')->nest('child', $view,$param);
+        }
+  
+    }
+
     public function decryptId($request)
     {
         try {

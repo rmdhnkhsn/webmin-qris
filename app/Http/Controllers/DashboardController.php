@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Request as Req;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +17,15 @@ class DashboardController extends Controller
     
     public function dashboardView(Request $request)
     {
-        return view('main')->nest('child', 'content.dashboard.index');
+        // return view('main')->nest('child', 'content.dashboard.index');
+
+        $view = 'content.dashboard.index';
+        $param = [];
+        if (Req::ajax()) {
+            return view('onlyContent')->nest('child', $view,$param);
+        }else {
+            return view('main')->nest('child', $view,$param);
+        }
     }
 
     public function data(Request $request)
