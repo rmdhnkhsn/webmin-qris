@@ -69,7 +69,7 @@ class GlobalController extends Controller
             ->limit(6)
             ->orderByDesc('crtdt')
             ->get();
-
+            
             foreach ($checkHistoryPassword as $k => $v) {
                 $checkPasswordOld = $this->hashPasswordCheck($request->input('newPassword'),$v->password);
                 if ($checkPasswordOld == $v->password) {

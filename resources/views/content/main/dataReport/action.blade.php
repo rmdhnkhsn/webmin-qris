@@ -1,199 +1,58 @@
 <script>
-// INIT FORM
 
-var blockUI = new KTBlockUI(document.querySelector("#mForm_content"));
-var setStartDate = 0;
-var setEndDate = 0;
-
-function clearForm() {
-    $("#formData")[0].reset();
-    $('#formData').bootstrapValidator("resetForm",true);
-    setId = 'new';
-}
-
-function modalForm(id) {
-    setId = id
-    $('#mForm').modal('show');
-    if (id == 'new') {
-        $('#mForm_title').html(`Tambah Data`);
-        $('#mForm_subTitle').html(`Tambah Data `+title);
-    }else{
-        $('#mForm_title').html(`Edit Data`);
-        $('#mForm_subTitle').html(`Edit Data `+title);
-    }
-
-    $('.znselectModal').select2({
-        placeholder: "Silahkan Pilih",
-        dropdownParent: "#mForm_content"
-    });
+    var setStartDate = 0;
+    var setEndDate = 0;
     
-    
-    $('#listData').html(``);
-    blockUI.block();
-    let formData = new FormData();
-    formData.append('id',setId);
-    doPost(routeStoreCustom+'&act=dataDetail', formData, function (msg, res) {
-        console.log(res)
-        let {main} = res.data
-
-        let noNeedNew = []
-        if (id === 'new') {
-            noNeedNew = []
-        }
-        initValidate(main,'formData')
-        
-         // SET VAL
-        if (id === 'new') {
-            clearForm()
-
-        }else{
-            $('#config_id').prop('readonly',true)
-            
-            for ( var key in main ) {
-                let val = main[key]
-
-                if (fieldSelect.includes(key)) {
-                    $('#'+key).val(val).trigger('change.select2');
-                    
-                } else {
-                    $('#'+key).val(val)
-                }
-            }
-            $('#formData').data('bootstrapValidator').validate();
-        }
-
-        
-
-        blockUI.release();
-        
-    })
-}
-
-function initValidate(data,formData) {
-    let tmpValidate = {}
-    let addValidate = {}
-
-    let noNeed = ['password','user_id','password_retry','reg_date','date_password','is_active']
-
-    for ( var key in data ) {
-        if (!noNeed.includes(key)) {
-
-            if (key == 'email') {
-                addValidate = {
-                    "emailAddress": {
-                        "message": 'format email salah'
-                    }
-                };
-            }
-            else if (key == 'ktp') {
-                addValidate = {
-                    "stringLength": {
-                        "min": 16,
-                        "max": 16,
-                        "message": 'Harus Di Isi 16 Digit'
-                    },
-                };
-            }else{
-                addValidate = {}
-            }
-            
-            tmpValidate = { 
-                    "notEmpty": {
-                        "message": 'Tidak Boleh Kosong'
-                    }
-                };
-
-            tmpValidate = { ...tmpValidate, ...addValidate };
-
-            setValidate[key] = { 
-                "validators": tmpValidate
-            };
-
-        }
-    }
-    
-
-    $("#"+formData).bootstrapValidator({
-        excluded: [':disabled'],
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: setValidate
-        
-    }).on('success.field.bv', function (e, data) {
-        var $parent = data.element.parents('.form-group');
-        $parent.removeClass('has-success');
-        $parent.find('.form-control-feedback[data-bv-icon-for="' + data.field + '"]').hide();
-    });
-}
-
-function storeCustom() {
-    let button = document.querySelector("#btnStore");
-    let myForm = document.getElementById('formData');
-    let formData = new FormData(myForm);
-    formData.append('id',setId);
-
-    console.warn('simpan');
-    var $validator = $('#formData').data('bootstrapValidator').validate();
-    if ($validator.isValid()) {
-        
-        // button.setAttribute("data-kt-indicator", "on");
-        
-        doPost(routeStoreCustom+'&act=storeUpdate', formData, function (msg, res) {
-
-            blockUI.release();
-
-            if (res == null){
-                znNotif("danger", msg);
-            }else {
-                if(res.rc == 0){
-                    znNotif('success','Berhasil Menyimpan Data');
-                    $('#mForm').modal('hide');
-                    table.ajax.url(routeTable).load();
-                }else{
-                    znNotif("danger", res.rm);
-                }
-            }
-
-        })
-    }else{
-        znNotif("warning", "Data Belum Lengkap !");
-    }
-}
-
-
-function getRef() {
-    let formData = new FormData();
-    doPost(routeStoreCustom+'&act=refDetail', formData, function (msg, res) {
-        let dataRef = res.data
-
-        for (const key in dataRef) {           
-            listSelect[key] = dataRef[key].map((v,i) => {
-                return `<option value="${v.value}">${v.print}</option>`
-            })
-        }
-    })
-}
-
-
-function getTable() {
-    var query = {
-        filterParam: $('#filterParam').val(),
-    }
-    table.ajax.url(routeTable+'&'+$.param(query)).load();
-}
-
-$(document).ready(function () {
-    // getRef()
-    $('#filterParam').on('select2:select', function (e) {
-        // var data = e.params.data;
+    $(document).ready(function () {
+        initDate()
         getTable()
-    });
-})
+        $('.znselect').select2({
+            placeholder: "Silahkan Pilih",
+        });
+    })
+    
+    function getTable() {
+        let query = {
+            startDate: setStartDate,
+            endDate: setEndDate,
+        }
 
-
-
-
+        table.ajax.url(routeTable+'&'+$.param(query)).load();
+    }
+    
+    function initDate() {
+        var start = moment();
+        var end = moment();
+    
+        function cb(start, end) {
+            setStartDate =  start.format('DD-MM-YYYY');
+            setEndDate = end.format('DD-MM-YYYY');
+    
+            getTable()
+    
+            console.log('New date range selected: ' + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
+            $("#kt_daterangepicker_4").val(start.format('DD MMM YYYY') + ' - ' + end.format('DD MMM YYYY'));
+        }
+    
+        $("#kt_daterangepicker_4").daterangepicker({
+            startDate: start,
+            endDate: end,
+            locale: {
+                format: 'DD MMM YYYY'
+            },
+            ranges: {
+                "Hari Ini": [moment(), moment()],
+                "Kemarin": [moment().subtract(1, "days"), moment().subtract(1, "days")],
+                "7 Hari Terakhir": [moment().subtract(6, "days"), moment()],
+                "30 Hari Terakhir": [moment().subtract(29, "days"), moment()],
+                "Bulan Ini": [moment().startOf("month"), moment().endOf("month")],
+                "Bulan Lalu": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")],
+                "Tahun Ini": [moment().startOf("year"), moment().endOf("year")],
+                "Tahun Lalu":  [moment().subtract(1, "year").startOf("year"), moment().subtract(1, "year").endOf("year")],
+            }
+        }, cb);
+    
+        cb(start, end);
+    }
+    
 </script>

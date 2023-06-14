@@ -22,7 +22,7 @@
 
 		<x-other.modal id="mChangePassword" title="Ubah Password" subTitle="Form Ubah Password" info="" separator="false" size="md">
 			<x-slot name="action">
-				<button onclick="changePassword_store()" class="btnModal bg-navy-1">Ubah</button>
+				<button onclick="changePassword_store()" class="btnModal bg-green-1">Ubah</button>
 			</x-slot>
 			<x-slot name="content">
 				<form id="mChangePasswordForm">

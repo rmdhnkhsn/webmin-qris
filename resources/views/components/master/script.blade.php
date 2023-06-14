@@ -308,7 +308,7 @@ function loadContent(e, elm) {
     e.preventDefault();
     let path = $(elm).attr('href').replace('#', '');
 
-    $('.zn-menu-link').removeClass('active');
+    $('.menuLink').removeClass('active');
     $(elm).addClass('active');
 
     // $("[id^='sb-']").removeClass('zn-menu-active');

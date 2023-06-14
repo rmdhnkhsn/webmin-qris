@@ -18,7 +18,7 @@
                
                 @if ($action != '')
                 <div id="{{$id}}_action" class="cardFooter">
-                    <button class="btnModal bg-navy-3" id="{{$id}}_btnClose" data-bs-dismiss="modal" aria-label="Close">
+                    <button class="btnModal bg-green-modal" id="{{$id}}_btnClose" data-bs-dismiss="modal" aria-label="Close">
                         BATAL
                     </button>
                     {{$action}} 

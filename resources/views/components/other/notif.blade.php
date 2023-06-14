@@ -3,13 +3,13 @@
         <div class="modal-content">
             <div class="modal-body py-8">
                 <div class="d-flex align-items-center flex-column p-1">
-                    <img src="{{ url('image/question2.svg')}}" class="questionImg">
-                    <a id="znNotif-title" class="font-weight-bold font-size-h4 mb-0 text-center" style="font-size: 18px;"></a>
+                    <img src="{{ url('image/question.svg')}}" class="questionImg">
+                    <a id="znNotif-title" class="font-weight-bold font-size-h4 mb-0 text-center" style="font-size: 18px;color: #00A551 !important"></a>
                     <div id="znNotif-text" class="text-center"></div>
                 </div>
                 <div id="znNotif-action" class="cardFooter">
-                    <button onclick="znNotifConfirmClose()" class="btnModal bg-navy-3">No</button>
-                    <button id="btnNotifYes" onclick="znNotifConfirmYa()" class="btnModal bg-navy-1">Yes</button>
+                    <button onclick="znNotifConfirmClose()" class="btnModal bg-green-modal">No</button>
+                    <button id="btnNotifYes" onclick="znNotifConfirmYa()" class="btnModal bg-green-1">Yes</button>
                 </div>
             </div>
         </div>

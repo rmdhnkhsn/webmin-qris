@@ -486,7 +486,7 @@ class MainController extends Controller
 
         $resultBtn = $etcButton.$editBtn.$ActiveBtn.$detailBtn.$deleteBtn;
 
-        return '<button type="button" class="btn btn-sm btn-icon bg-navy-3 btn-circle" style="width: 30px; height: 30px;" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
+        return '<button type="button" class="btn btn-sm btn-icon bg-green-2 btn-circle" style="width: 30px; height: 30px;" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
                     <i class="la la-gear fs-3"></i>
                 </button>
                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-150px py-4" data-kt-menu="true">

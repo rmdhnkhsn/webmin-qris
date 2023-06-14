@@ -24,7 +24,7 @@
 							</a>
 						</div>
 						<div class="block">
-							<div class="text">Webmin QRIS <div class="fs-4 mt-4">Analisis, manajemen user, config</div>  <div class="fs-4">dan laporan transaksi</div> </div>
+							<div class="text">Webmin QRIS <div class="fs-2 mt-4">Analisis, manajemen user, config</div>  <div class="fs-2">dan laporan transaksi</div> </div>
 						</div>
 						<div class="block">
 							<img src="{{url('image/login/data-report1.svg')}}" class="dataImg">

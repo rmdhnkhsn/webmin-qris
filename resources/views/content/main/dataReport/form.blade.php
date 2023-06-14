@@ -1,6 +1,6 @@
 <x-other.modal id="mForm" title="-" subTitle="-" info="" separator="false" size="md">
     <x-slot name="action">
-        <button onclick="storeCustom()" type="button" class="btnModal bg-navy-1" id="btnStore">
+        <button onclick="storeCustom()" type="button" class="btnModal bg-green-1" id="btnStore">
             <span class="indicator-label">
                 SIMPAN
             </span>

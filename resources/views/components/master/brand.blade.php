@@ -4,6 +4,10 @@
             <i class="la la-bars fs-1"></i>
         </div>
     </div>
-    <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-13">
+    <div class="d-flex align-items-center gap-5 flex-grow-1 flex-lg-grow-0 me-lg-13">
         <img alt="Logo" src="{{ asset('image/logo.png')}}" width="35px" />
+        <div class="verName">
+            <div class="version">Webmin QRIS v{{env('APP_VERSION')}}</div>
+            <div class="bank">BANK KALTENG</div>
+        </div>
     </div>

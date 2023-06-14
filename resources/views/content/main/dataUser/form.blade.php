@@ -1,8 +1,11 @@
 <x-other.modal id="mForm" title="-" subTitle="-" info="" separator="false" size="lg">
     <x-slot name="action">
-        <button onclick="storeCustom()" type="button" class="btnModal bg-navy-1" id="btnStore">
+        <button onclick="storeCustom()" type="button" class="btnModal bg-green-1" id="btnStore">
             <span class="indicator-label">
                 SIMPAN
+            </span>
+            <span class="indicator-progress">
+                Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
         </button>
      </x-slot>

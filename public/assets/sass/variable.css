@@ -104,6 +104,14 @@
   background: #ddd;
 }
 
+.h-38px {
+  height: 38px !important;
+}
+
+.h-40px {
+  height: 40px !important;
+}
+
 .bgReadOnly {
   background: #e3e4eb !important;
 }
@@ -112,24 +120,39 @@
 }
 
 .bg-green-1 {
-  background: #01A66F;
+  background: #00A551;
   color: #fff !important;
 }
+.bg-green-1 i {
+  color: #fff;
+}
 .bg-green-1:hover, .bg-green-1:focus {
-  background: #008d5e;
+  background: #059c4e;
   color: #fff !important;
 }
 
 .bg-green-2 {
-  background: #75CE9F;
+  background: rgba(5, 156, 78, 0.4392156863);
   color: #fff !important;
 }
 .bg-green-2 i {
   color: #fff;
 }
 .bg-green-2:hover, .bg-green-2:focus {
-  background: #68be91;
+  background: rgba(5, 156, 78, 0.6117647059);
   color: #fff !important;
+}
+
+.bg-green-modal {
+  background: rgba(0, 165, 81, 0.2509803922);
+  color: #00A551 !important;
+}
+.bg-green-modal i {
+  color: #00A551;
+}
+.bg-green-modal:hover, .bg-green-modal:focus {
+  background: rgba(0, 165, 81, 0.3137254902);
+  color: #00A551 !important;
 }
 
 .bg-green-3 {
@@ -178,6 +201,10 @@
 .bg-navy-3:hover, .bg-navy-3:focus {
   background: #cbcfe6;
   color: #4F5884 !important;
+}
+
+.bgFilter {
+  background: #f5fff9 !important;
 }
 
 .bg-dark-blue {

@@ -34,10 +34,7 @@ class ExcelExport implements FromView,ShouldAutoSize,WithColumnFormatting
     public function columnFormats(): array
     {
         return [
-            'A' => NumberFormat::FORMAT_NUMBER,
-            'C' => NumberFormat::FORMAT_NUMBER,
-            'D' => NumberFormat::FORMAT_NUMBER,
-            'E' => NumberFormat::FORMAT_NUMBER
+            'B' => NumberFormat::FORMAT_NUMBER
         ];
     }
 

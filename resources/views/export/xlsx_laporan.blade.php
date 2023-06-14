@@ -4,7 +4,7 @@
 
 <table>
     <tr>
-        <th style="border: 1px solid #2b2b2b; font-weight: bold">No</th>
+        <!-- <th style="border: 1px solid #2b2b2b; font-weight: bold">No</th> -->
         <th style="border: 1px solid #2b2b2b; font-weight: bold">Tanggal Trx</th>
         <th style="border: 1px solid #2b2b2b; font-weight: bold">Account No</th>
         <th style="border: 1px solid #2b2b2b; font-weight: bold">Nominal</th>
@@ -18,7 +18,7 @@
     </tr>
     @foreach($data as $v)
         <tr>
-            <td style="border: 1px solid #2b2b2b; font-weight: medium">{{$v->msg_id}}</td>
+            <!-- <td style="border: 1px solid #2b2b2b; font-weight: medium">{{$v->msg_id}}</td> -->
             <td style="border: 1px solid #2b2b2b; font-weight: medium">{{date('d/m/Y',strtotime($v->crtdt))}}</td>
             
             @if($v->account_no == null)

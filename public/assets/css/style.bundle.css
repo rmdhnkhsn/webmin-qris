@@ -44392,7 +44392,10 @@ code:not([class*="language-"]) {
   color: var(--bs-text-info);
 }
 .svg-icon.svg-icon-warning {
-  color: var(--bs-text-warning);
+  color: #EEB96B;
+}
+.svg-icon.svg-icon-pink {
+  color: #E27475;
 }
 .svg-icon.svg-icon-danger {
   color: var(--bs-text-danger);
@@ -44431,8 +44434,8 @@ code:not([class*="language-"]) {
   color: var(--bs-text-gray-900);
 }
 .svg-icon.svg-icon-1 svg {
-  height: 1.75rem !important;
-  width: 1.75rem !important;
+  height: 1.8rem !important;
+  width: 1.8rem !important;
 }
 .svg-icon.svg-icon-2 svg {
   height: 1.5rem !important;
@@ -51208,8 +51211,8 @@ body {
 .badgeAktif {
   border-radius: 10px;
   padding: 2px 10px;
-  background: #F1F4FF;
-  color: #007bff;
+  background: #e3f0e9;
+  color: #00A551;
   font-size: 12px;
   font-weight: 500;
 }

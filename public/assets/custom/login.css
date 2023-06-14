@@ -165,13 +165,13 @@ body {
 
 .logo {
     width: 240px;
-    margin-bottom: 3rem;
+    margin-bottom: 2.6rem;
 }
 
 
 .text {
     font-weight: 500;
-    font-size: 28px;
+    font-size: 34px;
     line-height: 24px;
     color: #FFFFFF;
     white-space: nowrap;
@@ -286,8 +286,8 @@ body {
 }
 
 .dataImg {
-    width: 120%;
-    margin-top: 3rem;
+    width: 115%;
+    margin-top: 2.6rem;
     margin-left: -1.4rem;
 }
 

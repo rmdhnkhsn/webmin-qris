@@ -5,15 +5,18 @@
                 <div class="justify-sb-res">
                     <div class="title c-666" id="set_breadcrumbs_sub">#</div>
                     <div class="containerRight">
-                        <div class="relative">
-                            <input type="text" data-kt-filter="search" class="form-control searchInput" placeholder="Cari..." />
-                            <img src="{{ url('image/ic_search.svg')}}" class="imgSearch">
-                        </div>
+                        @if(view()->exists($vToolFilter))
+                            @include($vToolFilter)
+                        @endif
                         <div class="justify-start gap-3">
+                            <div class="relative">
+                                <input type="text" data-kt-filter="search" class="form-control searchInput" placeholder="Cari..." />
+                                <img src="{{ url('image/ic_search.svg')}}" class="imgSearch">
+                            </div>
                             @if(view()->exists($vToolbar))
                                 @include($vToolbar)
                             @endif
-                            <button type="button" onclick="getTable();" class="btn btn-sm btn-icon bg-navy-3" style="border-radius: 20px">
+                            <button type="button" onclick="getTable();" class="btn btn-sm btn-icon bg-green-2" style="border-radius: 20px">
                                 <i class="la la-sync fs-4"></i>
                             </button>
                         </div>
@@ -27,7 +30,8 @@
                             <tr>
                                 @foreach($tableHead as $item)
                                     <th class="{{ $item[1] }}"
-                                        {{ ($item[0] == 'No') ? "style='width:50px;'":"" }}
+                                        {{ ($item[0] == 'Nominal') ? "style='min-width:120px;'":"" }}
+                                        {{ ($item[0] == 'Fee') ? "style='min-width:120px;'":"" }}
                                         {{ ($item[0] == 'Act') ? "style='width:50px;'":"" }}
                                         {{ ($item[0] == 'Status') ? "style='width:70px;'":"" }}>
                                         {{ $item[0] }}</th>

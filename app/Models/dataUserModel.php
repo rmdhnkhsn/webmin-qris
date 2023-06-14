@@ -150,6 +150,41 @@ class dataUserModel extends Model
                     $dataInject = [];
                     $dataInjectNew = [];
                     $id = ($request->id === 'new') ? 0:$request->id;
+
+                    // JIKA DATA BARU
+                    if ($request->id === 'new') {
+
+                        $checkUser = \DB::table('users')->where('username',$request->username)->count();
+                        $checkEmail = \DB::table('users')->where('email',$request->email)->count();
+
+                        if ($checkUser > 0) {
+                            return response()->json([
+                                'rc' => '99',
+                                'rm' => 'Username Sudah Terdaftar'
+                            ]);
+                        }
+
+                        if ($checkEmail > 0) {
+                            return response()->json([
+                                'rc' => '99',
+                                'rm' => 'E-Mail Sudah Terdaftar'
+                            ]);
+                        }
+
+                        $dataInjectNew = [
+                            'password' => $cGlobal->hashPassword('Artajas@123'),
+                            'regDate' => date('Y-m-d').'T'.date('H:i:s'), 
+                            'datePassword' => date('Y-m-d', strtotime("-62 days")),
+                            'passwordRetry' => 0,
+                            'userStatusId' => 1
+                        ];  
+                    // GET DATA OLD IF EDIT 
+                    }else{
+            
+                        $data['oldData'] = DB::table($this->table)
+                        ->where('user_id',$id)
+                        ->get();        
+                    }
             
                     $tmpNew = [];
                     $tmpRequest = $request->except(['type','act','id']);

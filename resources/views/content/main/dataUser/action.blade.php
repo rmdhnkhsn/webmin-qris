@@ -206,10 +206,10 @@ function storeCustom() {
     var $validator = $('#formData').data('bootstrapValidator').validate();
     if ($validator.isValid()) {
         
-        // button.setAttribute("data-kt-indicator", "on");
         
+        button.setAttribute("data-kt-indicator", "on");
         doPost(routeStoreCustom+'&act=storeUpdate', formData, function (msg, res) {
-
+            button.setAttribute("data-kt-indicator", "off");
             blockUI.release();
 
             if (res == null){

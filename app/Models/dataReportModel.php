@@ -30,7 +30,6 @@ class dataReportModel extends Model
         $data['actButton'] = ['edit', 'delete'];
         $data['tableHead'] = 
         array(
-            ["No","all","msg_id"],
             ["Tanggal Trx","all","crtdt"],
             ["Account No","all","account_no"],
             ["Nominal","all","amount"],
@@ -41,8 +40,6 @@ class dataReportModel extends Model
             ["RC","all","rc"],
             ["RC CBS","all","rc_cbs"],
             ["RC CBS REV","all","rc_cbs_rev"],
-            // ["Act","all","action"],
-
         ); 
 
         $data['db'] = $this->table;
@@ -60,7 +57,25 @@ class dataReportModel extends Model
 
     public function getQuery($request)
     {
-        $dtable = DB::table("msg")->orderBy("msg_id","ASC")->get();
+        if ($request->startDate) {
+
+            $startDate = date('Y-m-d',strtotime($request->startDate)).' 00:00:00';
+            $endDate = date('Y-m-d',strtotime($request->endDate)).' 24:00:00';      
+        }else{
+            $startDate = date('Y-m-d').' 00:00:00';
+            $endDate = date('Y-m-d').' 24:00:00';
+   
+        }
+
+        $dtable = \DB::select("SELECT
+                msg_id, crtdt, account_no, amount,
+                fee, rrn, traceno, proc_code,
+                rc, rc_cbs, rc_cbs_rev
+                from msg
+                where crtdt >= ? and crtdt <= ?
+                order by msg_id ASC
+
+        ",[$startDate, $endDate]);
 
         return $dtable;
     }

@@ -17,8 +17,6 @@ class DashboardController extends Controller
     
     public function dashboardView(Request $request)
     {
-        // return view('main')->nest('child', 'content.dashboard.index');
-
         $view = 'content.dashboard.index';
         $param = [];
         if (Req::ajax()) {
@@ -35,7 +33,7 @@ class DashboardController extends Controller
         $endDate = date('Y-m-d',strtotime($request->endDate)).' 24:00:00';   
 
         $money = \DB::select("SELECT
-                    count(amount) as count_amount,
+                    count(msg_id) as count_amount,
                     count(fee) as count_fee,
                     sum(amount) as amount,
                     sum(fee) as fee
@@ -108,7 +106,7 @@ class DashboardController extends Controller
             ->whereMonth('crtdt','=',$bulan)
             ->where("crtdt", ">=", $startDate)
             ->where("crtdt", "<=", $endDate)
-            ->count('rc');
+            ->count('msg_id');
 
             $temp_grafik[] = $grafik;
         }

@@ -104,7 +104,6 @@
 				{
 					name: "Transaksi",
 					data: [],
-					color: "#4C9A2A"
 				},
 			],
 			fill: {
